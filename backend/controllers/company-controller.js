@@ -25,6 +25,7 @@ const updateCompanyLogo = async (req, res, next) => {
   const sql = `UPDATE company_info
    SET logo = ?
    WHERE id = ?`;
+  console.log("gfvvff", companyId);
   const check = await verifyIsAdmin(db, userId);
   if (!check) {
     const error = new HttpError(
@@ -58,7 +59,7 @@ const asyncDB = async (db, query, params) => {
 };
 
 const verifyIsAdmin = async (db, userId) => {
-  const sql = "SELECT * FROM users WHERE id = ? AND is_admin = 1";
+  const sql = "SELECT * FROM users WHERE user_id = ? AND is_admin = 1";
   let isAdmin;
   try {
     await asyncDB(db, sql, userId);
