@@ -42,6 +42,12 @@ const updateCompanyLogo = async (req, res, next) => {
   });
 };
 
+/**
+ 
+  In this function we return a promise so we can await on it since sqlite3 does not support async/await on thier db connection.
+
+ */
+
 const asyncDB = async (db, query, params) => {
   return new Promise((resolve, reject) => {
     db.connection.all(query, params, (err, rows) => {
