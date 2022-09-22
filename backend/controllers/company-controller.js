@@ -25,7 +25,6 @@ const updateCompanyLogo = async (req, res, next) => {
   const sql = `UPDATE company_info
    SET logo = ?
    WHERE id = ?`;
-  console.log("gfvvff", companyId);
   const check = await verifyIsAdmin(db, userId);
   if (!check) {
     const error = new HttpError(
